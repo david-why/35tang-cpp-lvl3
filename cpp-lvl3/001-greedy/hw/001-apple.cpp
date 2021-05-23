@@ -16,18 +16,18 @@ int main()
 
         if (n2 < 2 || n3 < 3)
         {
-            cout << "-1" << endl;
+            cout << -1 << endl;
             continue;
         }
-        if (n2 > n3 - 1)
+        int tmp = n2 - (n3 - 1);
+        if (tmp > 0)
         {
-            int tmp = n2 - (n3 - 1);
             n2 -= tmp;
             ans += tmp;
         }
-        if (n1 > n2 - 1)
+        tmp = n1 - (n2 - 1);
+        if (tmp > 0)
         {
-            int tmp = n1 - (n2 - 1);
             n1 -= tmp;
             ans += tmp;
         }
