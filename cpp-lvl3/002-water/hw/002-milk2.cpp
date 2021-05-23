@@ -2,31 +2,44 @@
 
 using namespace std;
 
-using change = pair<int, short>;
+#define in(m, x) m.find(x) != m.end()
 #define time first
 #define mod second
 
 int main()
 {
     short n;
-    priority_queue<change, vector<change>, greater<change>> changes;
+    map<int, short> changes;
 
     cin >> n;
     for (short i = 0; i < n; i++)
     {
         int l, r;
         cin >> l >> r;
-        changes.push({l, 1});
-        changes.push({r, -1});
+        if (in(changes, l))
+        {
+            changes[l]++;
+        }
+        else
+        {
+            changes[l] = 1;
+        }
+        if (in(changes, r))
+        {
+            changes[r]--;
+        }
+        else
+        {
+            changes[r] = -1;
+        }
     }
 
-    int prev = -1, farmers = 0, maxy = 0, maxn = 0;
-    while (!changes.empty())
+    int prev = -1, prevtime = -1, farmers = 0, maxy = 0, maxn = 0;
+    for (map<int, short>::iterator it = changes.begin(); it != changes.end(); it++)
     {
-        short m = changes.top().mod;
-        int t = changes.top().time;
+        short m = (*it).mod;
+        int t = (*it).time;
         bool hasfarmers = farmers != 0;
-        changes.pop();
         if (hasfarmers)
         {
             if (t - prev > maxy)
@@ -42,10 +55,11 @@ int main()
             }
         }
         farmers += m;
-        if (hasfarmers ^ (farmers != 0))
+        if (hasfarmers != (farmers != 0) && t != prevtime)
         {
             prev = t;
         }
+        prevtime = t;
     }
 
     cout << maxy << " " << maxn << endl;
