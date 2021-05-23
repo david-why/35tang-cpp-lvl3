@@ -34,7 +34,7 @@ int main()
         }
     }
 
-    int prev = -1, prevtime = -1, farmers = 0, maxy = 0, maxn = 0;
+    int prev = -1, farmers = 0, maxy = 0, maxn = 0;
     for (map<int, short>::iterator it = changes.begin(); it != changes.end(); it++)
     {
         short m = (*it).mod;
@@ -55,11 +55,10 @@ int main()
             }
         }
         farmers += m;
-        if (hasfarmers != (farmers != 0) && t != prevtime)
+        if (hasfarmers != (farmers != 0))
         {
             prev = t;
         }
-        prevtime = t;
     }
 
     cout << maxy << " " << maxn << endl;
