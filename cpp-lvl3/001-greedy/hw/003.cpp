@@ -30,9 +30,9 @@ int main()
             left++;
             right--;
             ans++;
-            if (left == right)
-                ans++;
         }
+        if (left == right)
+            ans++;
     }
 
     cout << ans << endl;
