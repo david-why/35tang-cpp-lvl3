@@ -6,18 +6,10 @@ using change = pair<int, int>;
 #define time first
 #define mod second
 
-struct compare
-{
-    bool operator()(const change &a, const change &b)
-    {
-        return a.time > b.time;
-    }
-};
-
 int main()
 {
     int n;
-    priority_queue<change, vector<change>, compare> changes;
+    priority_queue<change, vector<change>, greater<change>> changes;
 
     cin >> n;
     for (int i = 0; i < n; i++)
