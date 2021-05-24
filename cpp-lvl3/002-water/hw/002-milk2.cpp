@@ -15,23 +15,11 @@ int main()
     for (short i = 0; i < n; i++)
     {
         int l, r;
+
         cin >> l >> r;
-        if (in(changes, l))
-        {
-            changes[l]++;
-        }
-        else
-        {
-            changes[l] = 1;
-        }
-        if (in(changes, r))
-        {
-            changes[r]--;
-        }
-        else
-        {
-            changes[r] = -1;
-        }
+
+        changes[l]++;
+        changes[r]--;
     }
 
     int prev = -1, farmers = 0, maxy = 0, maxn = 0;
