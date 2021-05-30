@@ -16,10 +16,6 @@ void dfs(int nowsum, int canuse)
         cout << endl;
         return;
     }
-    if (nowsum > m)
-    {
-        return;
-    }
 
     for (int next = canuse; next < n; next++)
     {
