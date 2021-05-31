@@ -11,10 +11,8 @@ void dfs(int canuse, int rest)
     {
         for (unsigned int i = 0; i < output.size(); i++)
         {
-            cout << output[i];
-            (i < output.size() - 1) && cout << '+';
+            cout << output[i] << ((i < output.size() - 1) ? '+' : '\n');
         }
-        cout << endl;
     }
 
     for (int i = canuse; i < n && i <= rest; i++)
