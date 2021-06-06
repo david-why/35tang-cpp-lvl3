@@ -15,10 +15,36 @@ OK
 
 using namespace std;
 
-int n, sticks[10], total = 0;
+int n, sticks[10], total = 0, side;
+bool used[10] = {false};
 
-bool dfs(int i)
+/* @param sides: # of sides already done */
+/* @param now: # of units already have in this side */
+void dfs(int sides, int now)
 {
+    if (sides == 2)
+    {
+        cout << "OK" << endl;
+        exit(0);
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        if (used[i] || (now + sticks[i]) > side)
+        {
+            continue;
+        }
+        used[i] = true;
+        if (now + sticks[i] == side)
+        {
+            dfs(sides + 1, 0);
+        }
+        else
+        {
+            dfs(sides, now + sticks[i]);
+        }
+        used[i] = false;
+    }
 }
 
 int main()
@@ -35,8 +61,10 @@ int main()
         cout << "NO" << endl;
         return 0;
     }
-    total /= 3;
-    dfs(0);
+    side = total / 3;
+    dfs(0, 0);
+
+    cout << "NO" << endl;
 
     return 0;
 }
