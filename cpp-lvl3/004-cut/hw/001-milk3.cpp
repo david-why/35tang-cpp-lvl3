@@ -5,7 +5,7 @@ using namespace std;
 #define NOW a][b][c
 #define min(a, b) (((a) < (b)) ? (a) : (b))
 
-bool visited[21][21][21] = {{{false}}};
+bool visited[21][21][21];
 vector<int> ans;
 int am, bm, cm;
 
