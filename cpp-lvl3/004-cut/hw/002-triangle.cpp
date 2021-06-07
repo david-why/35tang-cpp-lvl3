@@ -20,12 +20,11 @@ bool used[10] = {false};
 
 /* @param sides: # of sides already done */
 /* @param now: # of units already have in this side */
-void dfs(int sides, int now)
+bool dfs(int sides, int now)
 {
     if (sides == 2)
     {
-        cout << "OK" << endl;
-        exit(0);
+        return true;
     }
 
     for (int i = 0; i < n; i++)
@@ -37,14 +36,22 @@ void dfs(int sides, int now)
         used[i] = true;
         if (now + sticks[i] == side)
         {
-            dfs(sides + 1, 0);
+            if (dfs(sides + 1, 0))
+            {
+                return true;
+            }
         }
         else
         {
-            dfs(sides, now + sticks[i]);
+            if (dfs(sides, now + sticks[i]))
+            {
+                return true;
+            }
         }
         used[i] = false;
     }
+
+    return false;
 }
 
 int main()
@@ -56,15 +63,15 @@ int main()
         total += sticks[i];
     }
 
-    if (total % 3)
+    side = total / 3;
+    if (!(total % 3) && dfs(0, 0))
+    {
+        cout << "OK" << endl;
+    }
+    else
     {
         cout << "NO" << endl;
-        return 0;
     }
-    side = total / 3;
-    dfs(0, 0);
-
-    cout << "NO" << endl;
 
     return 0;
 }
