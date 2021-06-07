@@ -2,15 +2,15 @@
 
 using namespace std;
 
-using coord = short;
-using money = short;
+typedef short coord;
+typedef short money;
 // 2=Y
 // 1=R
 // 0=N
-using color = short;
+typedef short color;
 
-const coord movex[] = {+0, +0, +1, -1},
-            movey[] = {+1, -1, +0, +0};
+const coord movex[] = {+1, +0, +0, -1},
+            movey[] = {+0, +1, -1, +0};
 
 color colors[101][101] = {{0}};
 coord m, n;
@@ -20,7 +20,7 @@ int minmoney[101][101];
 
 void dfs(coord x, coord y, money cost, bool canmagic)
 {
-    if (cost > minmoney[x][y])
+    if (cost >= minmoney[x][y])
     {
         return;
     }
@@ -87,7 +87,7 @@ int main()
             minmoney[x][y] = INT_MAX;
         }
     }
-    
+
     dfs(1, 1, 0, true);
 
     cout << ans << endl;
