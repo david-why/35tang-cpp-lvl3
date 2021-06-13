@@ -12,16 +12,15 @@ const int mx[] = {+0, -0, +1, -1},
 
 // Take in current x and y, return how many ways to finish point from
 // here.
-int dfs(int x, int y)
+void dfs(int x, int y)
 {
     if (x == fx && y == fy)
     {
         ans++;
-        return 1;
+        return;
     }
 
     visited[x][y] = true;
-    int ans = 0;
     for (int i = 0; i < 4; i++)
     {
         int nx = x + mx[i], ny = y + my[i];
@@ -31,15 +30,11 @@ int dfs(int x, int y)
         {
             continue;
         }
-        int now = dfs(nx, ny);
-        if (now > ans)
-        {
-            ans = now;
-        }
+        dfs(nx, ny);
     }
     visited[x][y] = false;
 
-    return ans;
+    return;
 }
 
 int main()
