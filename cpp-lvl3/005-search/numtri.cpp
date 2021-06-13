@@ -3,9 +3,9 @@
 using namespace std;
 
 int r; // 1 <= r <= 1000
-int nums[1001][1001], nxt[1001][1001], ans;
+int nums[1001][1001], nxt[1001][1001];
 
-int dfs(int i, int j, int now)
+int dfs(int i, int j)
 {
     if (nxt[i][j] >= 0)
     {
@@ -13,13 +13,12 @@ int dfs(int i, int j, int now)
     }
     if (i == r)
     {
-        return nums[i][j];
+        return nxt[i][j] = nums[i][j];
     }
 
-    int m = dfs(i + 1, j, now + nums[i + 1][j]),
-        n = dfs(i + 1, j + 1, now + nums[i + 1][j + 1]);
-    nxt[i][j] = (m > n) ? m : n;
-    return (m > n) ? m : n;
+    int m = dfs(i + 1, j),
+        n = dfs(i + 1, j + 1);
+    return nxt[i][j] = nums[i][j] + ((m > n) ? m : n);
 }
 
 int main()
@@ -34,9 +33,7 @@ int main()
         }
     }
 
-    cout << dfs(0, 0, 0) << endl;
-
-    cout << ans << endl;
+    cout << dfs(0, 0) << endl;
 
     return 0;
 }
