@@ -17,6 +17,10 @@ void dfs(int prev, int sum, int need)
     need--;
     for (int i = prev + 1; i < n; i++)
     {
+        if (i > prev + 1 && nums[i] == nums[i - 1])
+        {
+            continue;
+        }
         dfs(i, sum + nums[i], need);
     }
 }
