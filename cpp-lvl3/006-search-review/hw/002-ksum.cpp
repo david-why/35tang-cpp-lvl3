@@ -38,10 +38,10 @@ int main()
 
     cout << ans.size() << "\n";
     int s = ans.size();
-    for (int i : ans)
+    for (set<int>::iterator it = ans.begin(); it != ans.end(); it++)
     {
         s--;
-        cout << i << (s ? " " : "\n");
+        cout << *it << (s ? " " : "\n");
     }
 
     return 0;
