@@ -5,9 +5,8 @@ using namespace std;
 int n, k;
 int nums[100];
 int output[80];
-int len;
 
-void dfs(int prev)
+void dfs(int prev, int len)
 {
     if (len == k)
     {
@@ -21,9 +20,7 @@ void dfs(int prev)
     for (int i = prev + 1; i < n; i++)
     {
         output[len] = nums[i];
-        len++;
-        dfs(i);
-        len--;
+        dfs(i, len + 1);
     }
 }
 
@@ -36,7 +33,7 @@ int main()
     }
 
     sort(nums, nums + n);
-    dfs(-1);
+    dfs(-1, 0);
 
     return 0;
 }
