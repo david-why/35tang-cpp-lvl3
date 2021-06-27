@@ -4,17 +4,11 @@ using namespace std;
 
 int n, m, p, q;
 
-int lastid;
 
 struct node
 {
-    int id;
     set<int> connections;
     bool visited = false;
-
-    node() : id(lastid++) {}
-    node(int id) : id(id) {}
-    node(int id, bool visited) : id(id), visited(visited) {}
 } nodes[1000];
 
 int ans;
