@@ -10,7 +10,7 @@ int n, m;
  */
 int grid[1000][1000];
 
-int nextid = 1;
+int nextid = 0;
 const int mrow[] = {+1, -1, +0, +0},
           mcol[] = {+0, +0, +1, -1};
 
@@ -50,12 +50,12 @@ int main()
         {
             if (!grid[row][col])
             {
-                dfs(row, col, nextid++);
+                dfs(row, col, ++nextid);
             }
         }
     }
 
-    cout << nextid - 1 << endl;
+    cout << nextid << endl;
 
     return 0;
 }
