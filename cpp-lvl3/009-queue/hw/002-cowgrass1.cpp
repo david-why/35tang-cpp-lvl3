@@ -9,7 +9,7 @@ int main()
 
     int now = q;
     int ans = 0;
-    while (p * 2 <= now)
+    while (p * 2 <= now && p + 1 < now)
     {
         if (now % 2)
             ans++;
