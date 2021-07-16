@@ -45,4 +45,6 @@ int main()
     ofstream fout("addnum.out");
     fout << ptr_out << endl;
     fout.close();
+
+    return 0;
 }
