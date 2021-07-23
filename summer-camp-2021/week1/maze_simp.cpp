@@ -57,7 +57,6 @@ int main()
         int r = (*it).first, c = (*it).second;
         if (component[r][c])
             continue;
-        // fout << r << " " << c << endl;
         int cid = ++next_component;
         queue<pair<int, int>> pending;
         pending.push(make_pair(r, c));
@@ -66,19 +65,19 @@ int main()
             pair<int, int> pos = pending.front();
             pending.pop();
             int nowr = pos.first, nowc = pos.second;
-            if (maze[nowr][nowc] .visited)
+            if (maze[nowr][nowc].visited)
                 continue;
             maze[nowr][nowc].visited = true;
             component[nowr][nowc] = cid;
             if (maze[nowr][nowc].people)
                 components[cid]++;
-            if (nowr > 1 && !(maze[nowr][nowc].up) && !(maze[nowr - 1][nowc] .visited))
+            if (nowr > 1 && !(maze[nowr][nowc].up) && !(maze[nowr - 1][nowc].visited))
                 pending.push(make_pair(nowr - 1, nowc));
-            if (nowc > 1 && !(maze[nowr][nowc].left) && !(maze[nowr][nowc - 1] .visited))
+            if (nowc > 1 && !(maze[nowr][nowc].left) && !(maze[nowr][nowc - 1].visited))
                 pending.push(make_pair(nowr, nowc - 1));
-            if (nowr < n && !(maze[nowr][nowc].down) && !(maze[nowr + 1][nowc] .visited))
+            if (nowr < n && !(maze[nowr][nowc].down) && !(maze[nowr + 1][nowc].visited))
                 pending.push(make_pair(nowr + 1, nowc));
-            if (nowc < n && !(maze[nowr][nowc].right) && !(maze[nowr][nowc + 1] .visited))
+            if (nowc < n && !(maze[nowr][nowc].right) && !(maze[nowr][nowc + 1].visited))
                 pending.push(make_pair(nowr, nowc + 1));
         }
     }
