@@ -8,15 +8,12 @@ int main()
 {
     int m, n;
     cin >> m >> n;
-    for (int row = 0; row < m; row++)
-        for (int col = 0; col < n; col++)
-            cin >> maze[row][col];
 
     for (int row = 0; row < m; row++)
     {
         for (int col = 0; col < n; col++)
         {
-            way[row][col] = maze[row][col];
+            cin >> way[row][col];
             if (row || col)
                 way[row][col] += min(
                     row ? way[row - 1][col] : INT_MAX,
