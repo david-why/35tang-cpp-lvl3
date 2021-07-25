@@ -17,8 +17,7 @@ int main()
 
         if (prev + diff == x)
         {
-            if (++seq_index > 0)
-                ans += seq_index;
+            ans += ++seq_index;
         }
         else
         {
