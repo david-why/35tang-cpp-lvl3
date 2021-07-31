@@ -20,22 +20,14 @@ int main()
     }
 
     int rpos = 0, time = 0, ans = 0;
-    while (true)
+    while (!stations.empty())
     {
         pair<int, int> station;
-        bool found = false;
-        while (!stations.empty())
-        {
-            station = stations.top();
-            stations.pop();
-            if (station.second >= rpos)
-            {
-                found = true;
-                break;
-            }
-        }
-        if (!found)
-            break;
+        station = stations.top();
+        stations.pop();
+        if (station.second < rpos)
+            continue;
+
         int need = (station.second - rpos) * rr;
         time += need;
         rpos = station.second;
