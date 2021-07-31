@@ -24,13 +24,10 @@ int main()
     {
         while (cookies[cookie] < children[child] && cookie < m)
             cookie++;
-        if (cookies[cookie] >= children[child])
-        {
-            ans++;
-            cookie++;
-        }
-        else if (cookie >= m - 1)
+        if (cookie >= m)
             break;
+        ans++;
+        cookie++;
     }
 
     ofstream fout("cookie.out");
