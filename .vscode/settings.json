@@ -76,6 +76,7 @@
         "typeinfo": "cpp",
         "variant": "cpp",
         "queue": "cpp",
-        "climits": "cpp"
+        "climits": "cpp",
+        "stl_iterator_base_types.h": "c"
     }
 }
