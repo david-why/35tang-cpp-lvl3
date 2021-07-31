@@ -19,7 +19,7 @@ int main()
         stations.push(make_pair(c, x));
     }
 
-    int rpos = 0, time = 0, prev = -1, ans = 0;
+    int rpos = 0, time = 0, ans = 0;
     while (true)
     {
         pair<int, int> station;
@@ -28,7 +28,7 @@ int main()
         {
             station = stations.top();
             stations.pop();
-            if (station.second > prev)
+            if (station.second >= rpos)
             {
                 found = true;
                 break;
