@@ -10,6 +10,7 @@ int n;
 void dfs(int now)
 {
     visited[now] = true;
+    n--;
 
     for (int key : keys[now])
         if (!visited[key])
@@ -35,18 +36,8 @@ int main()
 
     dfs(0);
 
-    bool ans = true;
-    for (int i = 0; i < n; i++)
-    {
-        if (!visited[i])
-        {
-            ans = false;
-            break;
-        }
-    }
-
     ofstream fout("key.out");
-    fout << (ans ? "true" : "false") << endl;
+    fout << (n ? "false" : "true") << endl;
     fout.close();
 
     return 0;
