@@ -3,7 +3,7 @@
 #include <fstream> // ifstream, ofstream
 #include <queue>   // priority_queue
 #include <utility> // pair, make_pair
-#include <iostream>
+
 using namespace std;
 
 int main()
@@ -33,17 +33,17 @@ int main()
         int need = (station.second - rpos) * rr;
         time += need;
         rpos = station.second;
-        cout << "I used " << need << "s to get to station @ " << station.second << "m, now it's " << time << "s." << endl;
-        cout << "The slow turtle is now at " << rt * time << "m." << endl;
+        // cout << "I used " << need << "s to get to station @ " << station.second << "m, now it's " << time << "s." << endl;
+        // cout << "The slow turtle is now at " << rt * time << "m." << endl;
         int rest = rpos * rt - time;
         time += rest;
         int yum = rest * station.first;
         ans += yum;
-        cout << "I rested " << rest << "s here and got " << yum << " yum points." << endl;
+        // cout << "I rested " << rest << "s here and got " << yum << " yum points." << endl;
     }
 
     ofstream fout("rabit.out");
-    cout << "I got " << ans << " yum points in total. Yum yum!" << endl;
+    // cout << "I got " << ans << " yum points in total. Yum yum!" << endl;
     fout << ans << endl;
     fout.close();
 
