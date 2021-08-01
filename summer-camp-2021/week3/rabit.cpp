@@ -1,5 +1,3 @@
-//老师，你的rabit拼错了，应该是rabbit :-)
-
 #include <fstream> // ifstream, ofstream
 #include <queue>   // priority_queue
 #include <utility> // pair, make_pair
@@ -19,7 +17,8 @@ int main()
         stations.push(make_pair(c, x));
     }
 
-    int rpos = 0, time = 0, ans = 0;
+    int rpos = 0, time = 0;
+    unsigned long long ans = 0;
     while (!stations.empty())
     {
         pair<int, int> station;
@@ -31,17 +30,19 @@ int main()
         int need = (station.second - rpos) * rr;
         time += need;
         rpos = station.second;
-        // cout << "I used " << need << "s to get to station @ " << station.second << "m, now it's " << time << "s." << endl;
-        // cout << "The slow turtle is now at " << rt * time << "m." << endl;
         int rest = rpos * rt - time;
         time += rest;
         int yum = rest * station.first;
         ans += yum;
-        // cout << "I rested " << rest << "s here and got " << yum << " yum points." << endl;
+        /**
+         * 之所以在这里使用了“逻辑有点复杂”的模拟，是因为我认为这样是最容易理解的。
+         * 更何况性能也没有太大的影响。
+         * 代码的逻辑越容易理解，越简单，出错的可能性就越小。
+         * 这是我的思路。
+         */
     }
 
     ofstream fout("rabit.out");
-    // cout << "I got " << ans << " yum points in total. Yum yum!" << endl;
     fout << ans << endl;
     fout.close();
 
