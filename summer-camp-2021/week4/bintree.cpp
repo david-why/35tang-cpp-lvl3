@@ -31,9 +31,9 @@ int main()
             if (i % (*it2).first == 0 && nums.find(i / (*it2).first) != nums.end())
             {
                 if ((*it2).first * (*it2).first == i)
-                    (*it).second = ((*it).second + (*it2).second * (*it2).second % MOD) % MOD;
+                    (*it).second = ((*it).second + (*it2).second * (*it2).second) % MOD;
                 else
-                    (*it).second = ((*it).second + 2 * (*it2).second * nums[i / (*it2).first] % MOD) % MOD;
+                    (*it).second = ((*it).second + 2 * (*it2).second * nums[i / (*it2).first]) % MOD;
             }
         }
         ans = (ans + (*it).second) % MOD;
