@@ -44,5 +44,7 @@ int main()
 
     ofstream fout("buy.out");
     fout << ans << endl;
+    fout.close();
+
     return 0;
 }

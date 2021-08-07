@@ -39,7 +39,7 @@ int main()
 
     ops[1] = '+';
     dfs(2, 1, 1);
-
     fout.close();
+
     return 0;
 }

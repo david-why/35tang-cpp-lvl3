@@ -42,4 +42,6 @@ int main()
     ofstream fout("bintree.out");
     fout << ans << endl;
     fout.close();
+
+    return 0;
 }

@@ -67,4 +67,6 @@ int main()
             if (reach[row][col].first && reach[row][col].second)
                 fout << row - 1 << " " << col - 1 << endl;
     fout.close();
+
+    return 0;
 }
