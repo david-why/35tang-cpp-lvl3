@@ -38,18 +38,25 @@ int main()
         reach[row][n + 1].second = true;
     }
 
-    for (const pair<int, vector<pair<int, int>>> &hl : h2p)
+    bool changed = true;
+    while (changed)
     {
-        int h = hl.first;
-        for (const pair<int, int> &pos : hl.second)
+        changed = false;
+        for (map<int, vector<pair<int, int>>>::iterator it = h2p.begin(); it != h2p.end(); it++)
         {
-            int r = pos.first, c = pos.second;
-            for (int i = 0; i < 4; i++)
+            pair<const int, vector<pair<int, int>>> &hl = *it;
+            int h = hl.first;
+            // for (pair<int, int> &pos : hl.second)
+            for (vector<pair<int, int>>::iterator posit = hl.second.begin(); posit != hl.second.end(); posit++)
             {
-                if (reach[r + mr[i]][c + mc[i]].first && !reach[r][c].first && heights[r + mr[i]][c + mc[i]] <= h)
-                    reach[r][c].first = true;
-                if (reach[r + mr[i]][c + mc[i]].second && !reach[r][c].second && heights[r + mr[i]][c + mc[i]] <= h)
-                    reach[r][c].second = true;
+                int r = (*posit).first, c = (*posit).second;
+                for (int i = 0; i < 4; i++)
+                {
+                    if (reach[r + mr[i]][c + mc[i]].first && heights[r + mr[i]][c + mc[i]] <= h && !reach[r][c].first)
+                        changed = reach[r][c].first = true;
+                    if (reach[r + mr[i]][c + mc[i]].second && heights[r + mr[i]][c + mc[i]] <= h && !reach[r][c].second)
+                        changed = reach[r][c].second = true;
+                }
             }
         }
     }
