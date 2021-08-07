@@ -8,8 +8,6 @@ char ops[11];
 
 void dfs(int now, int prevnum, int nowsum)
 {
-    // for (int i = 1; i < now; i++)
-    //     fout << ops[i] << i; fout << "=" << nowsum << endl;
     if (now > n)
     {
         if (!nowsum)
