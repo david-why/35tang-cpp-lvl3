@@ -6,7 +6,7 @@ using namespace std;
 
 #define MOD 1000000007
 
-map<int, int> nums;
+map<int, long long> nums;
 
 int main()
 {
@@ -22,11 +22,11 @@ int main()
     fin.close();
 
     int ans = 0;
-    for (map<int, int>::iterator it = nums.begin(); it != nums.end(); it++)
+    for (map<int, long long>::iterator it = nums.begin(); it != nums.end(); it++)
     {
         int i = (*it).first;
         double s = sqrt(i);
-        for (map<int, int>::iterator it2 = nums.begin(); (*it2).first <= s; it2++)
+        for (map<int, long long>::iterator it2 = nums.begin(); (*it2).first <= s; it2++)
         {
             if (i % (*it2).first == 0 && nums.find(i / (*it2).first) != nums.end())
             {
