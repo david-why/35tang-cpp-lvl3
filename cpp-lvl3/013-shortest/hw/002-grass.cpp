@@ -18,7 +18,7 @@ struct cmp
 };
 
 int weights[12][12];
-bool visited[65536];
+bool visited[12][1<<12];
 
 int main()
 {
@@ -30,28 +30,25 @@ int main()
 
     priority_queue<search_t, vector<search_t>, cmp> pending;
     pending.push({0, 0, (1 << n) - 2});
-    int ans = INT_MAX;
     while (!pending.empty())
     {
         search_t now = pending.top();
         pending.pop();
-        if (visited[now.visited + (now.pos << 12)])
+        if (visited[now.pos][now.visited])
             continue;
-        visited[now.visited + (now.pos << 12)] = true;
+        visited[now.pos][now.visited] = true;
         // now.visited |= (1 << now.pos);
         // cout << "@" << now.pos << " v" << bitset<12>(now.visited) << " w" << now.weight << endl;
         if (!now.visited)
         {
-            if (now.weight < ans)
-                ans = now.weight;
-            // cout << now.weight << endl;
-            continue;
+            cout << now.weight << endl;
+            return 0;
         }
         for (int i = 0; i < n; i++)
             if (weights[now.pos][i] && (now.visited & (1 << i)))
                 pending.push({now.weight + weights[now.pos][i], i, now.visited ^ (1 << i)});
     }
 
-    cout << ans << endl;
+    cout << "Emmm..." << endl;
     return 0;
 }
