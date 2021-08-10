@@ -4,12 +4,14 @@ using namespace std;
 
 char maze[200][200];
 
-typedef struct
+struct search_t
 {
     int row;
     int col;
-    int moves = 0;
-} search_t;
+    int moves;
+
+    search_t(int r = 0, int c = 0, int m = 0) : row(r), col(c), moves(m) {}
+};
 
 struct cmp
 {
@@ -63,7 +65,7 @@ int main()
             int newmoves = now.moves + 1;
             if (maze[newrow][newcol] == 'x')
                 newmoves++;
-            pending.push({newrow, newcol, newmoves});
+            pending.push(search_t(newrow, newcol, newmoves));
         }
     }
 
