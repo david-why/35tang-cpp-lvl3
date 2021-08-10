@@ -9,7 +9,6 @@ struct search_t
     int row;
     int col;
     int moves;
-
     search_t(int r = 0, int c = 0, int m = 0) : row(r), col(c), moves(m) {}
 };
 
@@ -35,11 +34,7 @@ int main()
         {
             cin >> maze[r][c];
             if (maze[r][c] == 'r')
-            {
-                begin.row = r;
-                begin.col = c;
-                begin.moves = 0;
-            }
+                begin = search_t(r, c);
         }
     }
 
