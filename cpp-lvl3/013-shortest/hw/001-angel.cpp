@@ -33,7 +33,11 @@ int main()
         {
             cin >> maze[r][c];
             if (maze[r][c] == 'r')
-                begin = {r, c};
+            {
+                begin.row = r;
+                begin.col = c;
+                begin.moves = 0;
+            }
         }
     }
 
