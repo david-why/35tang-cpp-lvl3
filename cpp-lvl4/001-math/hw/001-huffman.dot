@@ -1,0 +1,46 @@
+digraph G {
+    /* Entities */
+    C [label="3\nC"];
+    A [label="4\nA"];
+    E [label="2\nE"];
+    B [label="1\nB"];
+    D [label="1\nD"];
+
+    Cb [label="00", shape=plaintext];
+    Ab [label="01", shape=plaintext];
+    Eb [label="10", shape=plaintext];
+    Bb [label="110", shape=plaintext];
+    Db [label="111", shape=plaintext];
+
+    BD [label="2"];
+    AC [label="7"];
+
+    EBD [label="4"];
+
+    EBDAC [label="11"];
+
+    /* Relationships */
+    C -> Cb [style=invis];
+    A -> Ab [style=invis];
+    E -> Eb [style=invis];
+    B -> Bb [style=invis];
+    D -> Db [style=invis];
+
+    BD -> B [label="0"];
+    BD -> D [label="1"];
+    AC -> C [label="0"];
+    AC -> A [label="1"];
+
+    EBD -> BD [label="1"];
+    EBD -> E [label="0"];
+
+    EBDAC -> EBD [label="1"];
+    EBDAC -> AC [label="0"];
+
+    /* Ranks */
+    { rank=max; Ab; Bb; Cb; Db; Eb; };
+    { rank=same; A; B; C; D; E; };
+    { rank=same; BD; AC; };
+    { rank=same; EBD; };
+    { rank=min; EBDAC; };
+}
