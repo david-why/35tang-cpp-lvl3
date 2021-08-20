@@ -46,7 +46,6 @@ int main()
         {
             pair<const int, vector<pair<int, int>>> &hl = *it;
             int h = hl.first;
-            // for (pair<int, int> &pos : hl.second)
             for (vector<pair<int, int>>::iterator posit = hl.second.begin(); posit != hl.second.end(); posit++)
             {
                 int r = (*posit).first, c = (*posit).second;
