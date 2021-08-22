@@ -1,6 +1,6 @@
 #include <fstream> // ifstream, ofstream
 #include <vector>  // vector
-#include <unordered_set>     // unordered_set
+#include <set>     // set
 
 using namespace std;
 
@@ -9,7 +9,7 @@ ofstream fout("selectp.out");
 
 int n, k;
 vector<int> nums;
-unordered_set<int> primes;
+set<int> primes;
 
 bool isprime(int num)
 {
@@ -43,7 +43,7 @@ int main()
     }
 
     dfs(0, 0, k);
-    
+
     fout << primes.size() << endl;
 
     return 0;

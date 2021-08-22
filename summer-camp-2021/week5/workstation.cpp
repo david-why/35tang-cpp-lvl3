@@ -35,14 +35,15 @@ int main()
         if (whichcycle[now])
         {
             int cyclelen = i - whichcycle[now];
-            int offset = k % cyclelen - 1;
+            int offset = (k - whichcycle[now] + 1) % cyclelen + whichcycle[now];
             cout << "Cycled!" << endl
                  << "Cycle len: " << cyclelen << endl
                  << "Offset is: " << offset << endl;
-            fout << visited[offset] << endl;
+            fout << visited[offset - 1] << endl;
             return 0;
         }
         whichcycle[now] = i;
+        visited.push_back(now);
 
         for (int j = 0; j < m; j++)
         {
@@ -51,7 +52,6 @@ int main()
             else
                 now = workstations[now].left;
         }
-        visited.push_back(now);
     }
 
     fout << now << endl;
