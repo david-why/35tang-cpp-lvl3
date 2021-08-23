@@ -9,26 +9,31 @@ ofstream fout("tower.out");
 int n, a, b;
 int positions[2000];
 
-int dp[2000];
+int dp[2000][2000];
 
 int main()
 {
     fin >> n >> a >> b;
     a *= 2;
     for (int i = 0; i < n; i++)
-        fin >> positions[i];
-
-    sort(positions, positions + n);
-    dp[0] = a;
-
-    for (int j = 1; j < n; j++)
     {
-        dp[j] = a + b * (positions[j] - positions[0]);
-        for (int k = 1; k < j; k++)
-            dp[j] = min(dp[j], dp[k] + a + b * (positions[j] - positions[k + 1]));
+        fin >> positions[i];
+        dp[i][i] = a;
     }
 
-    fout << dp[n - 1] / 2 << endl;
+    sort(positions, positions + n);
+
+    for (int i = n - 1; i >= 0; i--)
+    {
+        for (int j = i; j < n; j++)
+        {
+            dp[i][j] = a + b * (positions[j] - positions[i]);
+            for (int k = i; k < j; k++)
+                dp[i][j] = min(dp[i][j], dp[i][k] + dp[k + 1][j]);
+        }
+    }
+
+    fout << dp[0][n - 1] / 2 << endl;
 
     return 0;
 }
