@@ -19,12 +19,11 @@ int main()
         fin >> positions[i];
 
     sort(positions, positions + n);
-    dp[0] = a;
 
-    for (int j = 1; j < n; j++)
+    for (int j = 0; j < n; j++)
     {
         dp[j] = a + b * (positions[j] - positions[0]);
-        for (int k = 1; k < j; k++)
+        for (int k = 0; k < j; k++)
             dp[j] = min(dp[j], dp[k] + a + b * (positions[j] - positions[k + 1]));
     }
 
