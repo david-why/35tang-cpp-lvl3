@@ -15,14 +15,13 @@ int checkok(int s)
 
     for (i = 1; i <= n; i++)
     {
-        if (presum[i] - tm < s)
-            continue;
         if (presum[i] - tm > s)
             return 0;
         if (presum[i] - tm == s)
             tm = presum[i];
     }
-    return 1;
+
+    return presum[n] == tm;
 }
 
 int main()
@@ -38,7 +37,7 @@ int main()
 
     for (i = 1;; i++)
     {
-        if (checkok(i))
+        if (presum[n] % i == 0 && checkok(i))
         {
             printf("%d\n", i);
             return 0;
