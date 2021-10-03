@@ -34,5 +34,6 @@ int main()
             left++;
     }
 
-    return 1;
+    cout << "IMPOSSIBLE" << endl;
+    return 0;
 }
