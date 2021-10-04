@@ -8,24 +8,31 @@ A[i] := 1 - 999999999
 
 using namespace std;
 
-int nums[200001];
+pair<int, int> nums[200001];
 
 int main()
 {
     int n, m;
     cin >> n >> m;
     for (int i = 1; i <= n; i++)
-        cin >> nums[i];
+    {
+        cin >> nums[i].first;
+        nums[i].second = i;
+    }
 
     sort(nums + 1, nums + n + 1);
 
     int left = 1, right = n;
     while (left < right)
     {
-        int a = nums[left], b = nums[right];
+        int a = nums[left].first, b = nums[right].first;
         if (a + b == m)
         {
-            cout << left << " " << right << endl;
+            int l = nums[left].second, r = nums[right].second;
+            if (l <= r)
+                cout << l << " " << r << endl;
+            else
+                cout << r << " " << l << endl;
             return 0;
         }
         if (a + b > m)
