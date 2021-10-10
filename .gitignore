@@ -3,3 +3,4 @@
 *.c.out
 *.c.exe
 .vscode/c_cpp_properties.json
+a.out
