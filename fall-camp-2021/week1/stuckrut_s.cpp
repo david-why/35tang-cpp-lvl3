@@ -88,7 +88,7 @@ int main()
         }
     }
 
-    auto fblames = [&]()
+    auto fblames = [&]() // ;)
     {
         int vert = 0, horiz = 0;
         for (int i = 0; i < n; i++)
