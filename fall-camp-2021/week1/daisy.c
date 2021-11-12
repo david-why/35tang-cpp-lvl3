@@ -1,33 +1,38 @@
 #include <stdio.h>
+#include <string.h>
 
 #define maxn 100
+#define maxp 1000
 
-int presum[maxn + 1], nums[maxn + 1];
+int nums[maxn + 1];
+unsigned char visited[maxp + 1];
 
 int main()
 {
-    int n, i, j, k, ans;
+    int n, i, j, k, ans, m = 0;
 
     scanf("%d", &n);
     for (i = 1; i <= n; i++)
     {
         scanf("%d", nums + i);
-        presum[i] = presum[i - 1] + nums[i];
+        if (nums[i] > m)
+            m = nums[i];
     }
 
     ans = n;
     for (i = 1; i <= n; i++)
     {
+        memset(visited, 0, m + 1);
+        visited[nums[i]] = 1;
+        int sum = nums[i];
         for (j = i + 1; j <= n; j++)
         {
-            int sum = presum[j] - presum[i - 1], diff = j - i + 1, avg, isans = 0;
+            int diff = j - i + 1;
+            sum += nums[j];
+            visited[nums[j]] = 1;
             if (sum % diff)
                 continue;
-            avg = sum / diff;
-            for (int k = i; k <= j; k++)
-                if (nums[k] == avg)
-                    isans = 1;
-            if (isans)
+            if (visited[sum / diff])
                 ans++;
         }
     }
