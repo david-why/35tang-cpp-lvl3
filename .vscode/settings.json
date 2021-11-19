@@ -79,6 +79,7 @@
         "climits": "cpp",
         "stl_iterator_base_types.h": "c",
         "stdio.h": "c",
-        "span": "cpp"
+        "span": "cpp",
+        "ranges": "cpp"
     }
 }
