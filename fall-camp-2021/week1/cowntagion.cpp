@@ -41,30 +41,3 @@ int main()
     cout << ans << endl;
     return 0;
 }
-
-/*
-from math import ceil, log2
-
-n_farms = int(input())
-from_to = {_: set() for _ in range(n_farms)}
-for path in range(n_farms - 1):
-    t = tuple(map((-1).__add__, map(int, input().split())))
-    from_to[t[0]].add(t[1])
-    from_to[t[1]].add(t[0])
-
-days = 0
-pool = {0}
-got = set()
-while pool:
-    now = pool.pop()
-    got.add(now)
-    need = 1
-    for farm in from_to[now]:
-        if farm not in got:
-            need += 1
-            pool.add(farm)
-            days += 1
-    days += ceil(log2(need))
-
-print(days)
-*/
