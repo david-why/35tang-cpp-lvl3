@@ -22,7 +22,7 @@ int main()
     ans = n;
     for (i = 1; i <= n; i++)
     {
-        memset(visited, 0, m + 1);
+        memset(visited, 0, sizeof(visited));
         visited[nums[i]] = 1;
         int sum = nums[i];
         for (j = i + 1; j <= n; j++)
