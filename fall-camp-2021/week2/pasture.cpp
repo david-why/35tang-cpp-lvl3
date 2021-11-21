@@ -13,10 +13,12 @@ int main()
     cin >> n;
     for (int i = 1; i <= n; i++)
         cin >> cows[i].first >> cows[i].second;
+
     sort(cows + 1, cows + 1 + n, [](const pair<int, int> &a, const pair<int, int> &b)
          { return a.first < b.first; });
     for (int i = 1; i <= n; i++)
         cows[i].first = i;
+
     sort(cows + 1, cows + 1 + n, [](const pair<int, int> &a, const pair<int, int> &b)
          { return a.second < b.second; });
     for (int i = 1; i <= n; i++)
@@ -24,19 +26,11 @@ int main()
         cows[i].second = i;
         presum[cows[i].first][i]++;
     }
+
     for (int i = 1; i <= n; i++)
         for (int j = 1; j <= n; j++)
             presum[i][j] += presum[i][j - 1] + presum[i - 1][j] - presum[i - 1][j - 1];
-    // for (int i = 1; i <= n; i++)
-    // {
-    //     for (int j = 1; j <= n; j++)
-    //     {
-    //         cout << presum[i][j] << "\t";
-    //     }
-    //     cout << endl;
-    // }
-    // for (int i = 1; i <= n; i++)
-    //     cout << "cow #" << i << " x=" << cows[i].first << " y=" << cows[i].second << endl;
+
     long long ans = n + 1;
     for (int i = 1; i <= n; i++)
     {
