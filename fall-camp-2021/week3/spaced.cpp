@@ -1,3 +1,7 @@
+/*
+USACO 2021 January Contest, Silver
+Problem 3. Spaced Out
+*/
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -13,7 +17,6 @@ int main()
             scanf("%d", a[i] + j);
 
     int b = 0;
-    // cout << "Vertical" << endl;
     for (int c = 1; c <= n; c++)
     {
         int o = 0, e = 0;
@@ -24,7 +27,6 @@ int main()
         b += max(o, e);
     }
     int x = 0;
-    // cout << "Horizontal" << endl;
     for (int r = 1; r <= n; r++)
     {
         int o = 0, e = 0;

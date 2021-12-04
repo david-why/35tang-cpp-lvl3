@@ -1,3 +1,7 @@
+/*
+USACO 2021 January Contest, Silver
+Problem 2. No Time to Paint
+*/
 /* Answer's algorithm, AC */
 #include <bits/stdc++.h>
 

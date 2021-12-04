@@ -1,3 +1,7 @@
+/*
+USACO 2021 January Contest, Silver
+Problem 2. No Time to Paint
+*/
 /* My own algorithm, TLE on last 5 testcases */
 #include <bits/stdc++.h>
 

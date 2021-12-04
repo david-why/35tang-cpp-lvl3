@@ -1,3 +1,7 @@
+/*
+USACO 2021 January Contest, Silver
+Problem 1. Dance Mooves
+*/
 #include <bits/stdc++.h>
 
 using namespace std;

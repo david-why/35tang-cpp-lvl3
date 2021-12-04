@@ -1,3 +1,7 @@
+/*
+USACO 2021 February Contest, Bronze
+Problem 2. Comfortable Cows
+*/
 #include <bits/stdc++.h>
 
 using namespace std;
